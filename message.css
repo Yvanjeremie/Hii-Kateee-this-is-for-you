@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css?family=Caveat");
+
+body {
+  background: linear-gradient(to bottom, #090513 0%, #964987 75%, #fdbca3 100%);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: "Caveat", cursive;
+}
+
+#firework-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999; 
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+  text-align: center;
+  margin-top: -10vh;
+  
+}
+
+.carousel-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+  
+}
+
+.profile-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 0 0 20px rgba(255,255,255,0.5);
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.profile-img.active {
+  opacity: 1;
+}
+
+@keyframes floatLogo {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+h1, h2 {
+  color: #fff;
+  margin: 0;
+  transform: rotate(-3deg);
+}
+
+h2 { font-size: calc(1em + 2vw); opacity: 0.9; }
+h1 { font-size: calc(1.5em + 5vw); padding: 10px 0; }
+
+.play-button {
+  margin-top: 300px;
+  padding: 15px 35px;
+  font-size: 1.5rem;
+  font-family: "Caveat", cursive;
+  background: white;
+  color: #964987;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  z-index: 101;
+  transition: transform 0.3s ease;
+  
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+  background: #fdbca3;
+}
+
+.stars { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; }
+.mountains { position: absolute; bottom: 0; width: 100%; height: 100px; z-index: 5; }
+.mountains--layer2 { fill: #9d5189; }
+.mountains--layer1 { fill: #000022; }
+
+.profile-img {
+  position: absolute;
+  opacity: 0; /* Everything is hidden by default */
+  transition: opacity 1s ease-in-out; /* This makes the 3-sec swap look smooth */
+}
+
+.profile-img.active {
+  opacity: 1; /* Only the image with the 'active' class is visible */
+}
+
+.stars {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-animation: rotation 360s infinite linear;
+          animation: rotation 360s infinite linear;
+}
+.stars:after, .stars:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAABlBMVEVHcEz///+flKJDAAAAAXRSTlMAQObYZgAAAIVJREFUeAHt2SEOwkAQhtFJKuqKRRGOgKzgUMgKRI/G0ZDoacNkN/ue/zJ+/ugBcI+01/EEAGBc04FkP58AVFoi7VaSLAEAAPB/j0hbK678AADMkXbZG03mGA0AAKsP3JgAAGDa88knsuZ8Mp1M6gEAPFtNrtEjtkh7lyRb3/PAWpS0BPgC0PMMdOEjXqoAAAAASUVORK5CYII=");
+}
+.stars:after {
+  background-size: 100px;
+  opacity: 0.4;
+}
+.stars:before {
+  background-size: 200px;
+  opacity: 0.6;
+}
+
+@-webkit-keyframes rotation {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Container for the text box */
+.message-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 400px;
+    padding: 30px;
+    
+    /* The Glass Effect */
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    
+    text-align: center;
+    color: white;
+    z-index: 100;
+}
+
+.title {
+    font-family: 'Ca', serif;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #ffdae9; /* Soft pink color */
+    text-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
+}
+
+.text {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    font-family: 'Caveat', sans-serif;
+}
+
+.heart {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    animation: pulse 1.5s infinite;
+}
+
+/* Simple heart-beat animation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
